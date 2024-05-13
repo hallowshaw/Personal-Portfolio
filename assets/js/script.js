@@ -157,21 +157,3 @@ script.onload = function () {
 
 
 
-// JavaScript to update the view count
-let views = 0; // Initialize the view count
-
-// Function to update the view count
-function updateViews() {
-  // Increment the views count
-  views++;
-  // Update the view count in the DOM
-  document.getElementById('viewCounter').innerText = views + ' views';
-}
-
-// Call the updateViews function when the page loads
-document.addEventListener('DOMContentLoaded', function () {
-  // Simulate page visit by calling updateViews
-  updateViews();
-});
-
-
