@@ -154,3 +154,18 @@ script.onload = function () {
   document.getElementById('contact-form').addEventListener('submit', sendEmail);
 };
 
+
+/**
+ * Checks if mobile, then hire me opens app else it opens email client
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var email = "rhitam.rit54@gmail.com";
+  var link = document.getElementById("hireMeLink");
+
+  if (isMobile) {
+    link.setAttribute("href", "intent://send/" + email + "#Intent;scheme=mailto;package=com.google.android.gm;end");
+  } else {
+    link.setAttribute("href", "mailto:" + email);
+  }
+});
