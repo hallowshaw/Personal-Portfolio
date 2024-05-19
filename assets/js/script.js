@@ -155,5 +155,19 @@ script.onload = function () {
 };
 
 
+/**
+ * Profile Visits
+ */
+
+window.onload = function () {
+  fetch('http://localhost:3000/api/get-views')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('viewCount').textContent = data.views;
+    })
+    .catch(error => console.error('Error fetching views:', error));
+}
+
+
 
 
