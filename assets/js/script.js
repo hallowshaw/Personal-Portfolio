@@ -161,13 +161,14 @@ script.onload = function () {
 
 window.onload = async function () {
   try {
-    const response = await fetch('https://personal-portfolio-4yig.onrender.com/api/get-views');
+    const response = await fetch('http://localhost:3000/api/get-views');
     const data = await response.json();
     document.getElementById('viewCount').textContent = data.views;
   } catch (error) {
     console.error('Error fetching views:', error);
   }
 }
+
 
 
 
