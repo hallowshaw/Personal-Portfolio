@@ -161,17 +161,13 @@ script.onload = function () {
 
 window.onload = async function () {
   try {
-    const response = await fetch('http://localhost:3000/api/get-views'); //bug fixes
+    const response = await fetch('https://personal-portfolio-fdea.onrender.com/api/get-views');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
     document.getElementById('viewCount').textContent = data.views;
   } catch (error) {
     console.error('Error fetching views:', error);
   }
 }
-
-
-
-
-
-
-
