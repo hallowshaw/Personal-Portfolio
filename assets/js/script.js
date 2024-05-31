@@ -161,7 +161,7 @@ script.onload = function () {
 
 window.onload = async function () {
   try {
-    const response = await fetch('https://personal-portfolio-fdea.onrender.com/api/get-views');
+    const response = await fetch('https://personal-portfolio-fdea.onrender.com/api/get-views'); //bug fixes
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
