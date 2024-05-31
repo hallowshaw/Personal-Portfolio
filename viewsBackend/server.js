@@ -1,30 +1,41 @@
+require('dotenv').config();
 const express = require('express');
-const fs = require('fs');
+const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const countFile = path.join(__dirname, 'count.txt');
+
+// MongoDB connection
+const mongoUri = process.env.MONGO_URI;
+mongoose.connect(mongoUri)
+    .then(() => console.log('MongoDB connected'))
+    .catch((err) => console.log('MongoDB connection error:', err));
+
+// Define the schema and model
+const viewSchema = new mongoose.Schema({
+    count: { type: Number, default: 0 }
+});
+
+const View = mongoose.model('View', viewSchema);
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Endpoint to serve the visit count
-app.get('/api/get-views', (req, res) => {
-    fs.readFile(countFile, 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).json({ error: 'Failed to read count file' });
+app.get('/api/get-views', async (req, res) => {
+    try {
+        let view = await View.findOne();
+        if (!view) {
+            view = new View();
         }
-        let count = parseInt(data, 10) || 0;
-        count++;
-        fs.writeFile(countFile, count.toString(), (err) => {
-            if (err) {
-                return res.status(500).json({ error: 'Failed to write count file' });
-            }
-            res.json({ views: count });
-        });
-    });
+        view.count++;
+        await view.save();
+        res.json({ views: view.count });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch or update views' });
+    }
 });
 
 app.listen(port, () => {
