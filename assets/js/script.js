@@ -158,11 +158,10 @@ script.onload = function () {
 /**
  * Profile Visits
  */
-
 window.onload = async function () {
   try {
-    const response = await fetch('https://personal-portfolio-virid-rho.vercel.app/api/get-views', {
-      mode: 'cors'
+    const response = await fetch('https://personal-portfolio-ssmq.onrender.com/api/get-views', {
+      mode: 'cors' // Ensure mode is set to 'cors'
     });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -171,5 +170,11 @@ window.onload = async function () {
     document.getElementById('viewCount').textContent = data.views;
   } catch (error) {
     console.error('Error fetching views:', error);
+    if (error.name === 'TypeError') {
+      console.error('Likely a CORS error or network issue:', error.message);
+    }
   }
 }
+
+
+
