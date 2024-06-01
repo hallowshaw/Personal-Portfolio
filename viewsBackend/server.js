@@ -20,7 +20,12 @@ const viewSchema = new mongoose.Schema({
 
 const View = mongoose.model('View', viewSchema);
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://personal-portfolio-virid-rho.vercel.app',
+    optionsSuccessStatus: 200 // For legacy browser support
+};
+
+app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Endpoint to serve the visit count

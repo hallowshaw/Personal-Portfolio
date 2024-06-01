@@ -161,7 +161,9 @@ script.onload = function () {
 
 window.onload = async function () {
   try {
-    const response = await fetch('https://personal-portfolio-fdea.onrender.com/api/get-views'); //bug fixes
+    const response = await fetch('https://personal-portfolio-virid-rho.vercel.app/api/get-views', {
+      mode: 'cors'
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
