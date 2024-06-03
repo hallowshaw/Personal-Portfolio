@@ -11,7 +11,7 @@ You can view the live website [here](https://portfolio-rhitam.netlify.app/).
 - **Skills:** List of my technical skills and competencies.
 - **Projects:** Showcase of the projects I have worked on, with descriptions and links.
 - **Contact:** Form integrated with email.js for easy communication. Also includes links to my resume and other social media profiles.
-- **Profile Visits:** Implemented profile visits feature using Node.js and fs.
+- **Profile Visits:** Implemented profile visits feature using Node.js and MongoDB.
 
 
 ## Built With
