@@ -19,6 +19,9 @@ You can view the live website [here](https://portfolio-rhitam.netlify.app/).
 - HTML
 - CSS
 - JavaScript
+- Node JS
+- MongoDB
+
 
 ## External Services
 
